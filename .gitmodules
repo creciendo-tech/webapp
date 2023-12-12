@@ -1,0 +1,6 @@
+[submodule "front"]
+	path = front
+	url = https://github.com/creciendo-tech/vue-typescript-starter.git
+[submodule "back"]
+	path = back
+	url = https://github.com/creciendo-tech/backend-fastapi.git

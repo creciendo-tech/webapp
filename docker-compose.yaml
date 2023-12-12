@@ -1,0 +1,46 @@
+version: "3.9"
+
+services:
+  front:
+    build: ./front
+    ports:
+      - "4002:5173"
+    container_name: front
+    entrypoint: "yarn dev --host"
+
+  db:
+    image: mysql:latest
+    container_name: mysql-vue
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: "db"
+      MYSQL_USER: "user"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_ALLOW_NATIVE_PASSWORDS: "true"
+    ports:
+      - "3308:3306"
+    expose:
+      # Opens port 3306 on the container
+      - "3306"
+      # Where our data will be persisted
+    volumes:
+      - my-db:/var/lib/mysql
+
+  back:
+    build: ./back
+    environment:
+      - DOCKER=1
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    container_name: back
+    volumes:
+      - ./back:/app
+
+    entrypoint: "python app.py"
+
+volumes:
+  my-db:

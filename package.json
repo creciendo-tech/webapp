@@ -1,0 +1,19 @@
+{
+  "name": "filtro-vue",
+  "packageManager": "yarn@3.2.3",
+  "author": {
+    "email": "creciendotech@gmail.com",
+    "name": "Carlos Marchena",
+    "url": "https://www.linkedin.com/in/cmarchena/"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "husky": "^8.0.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3"
+  }
+}
